@@ -45,7 +45,6 @@ body {
 
   --secondary: 210 4% 46%;
   --foreground: 210 7% 91%;
-  --test: blue;
 }
 
 @theme inline {
@@ -89,4 +88,16 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+.transitionStyle {
+  transition: all 0.2s linear;
+}
+
+.hideScroll::-webkit-scrollbar {
+  display: none;
+}
+
+.hideScroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }

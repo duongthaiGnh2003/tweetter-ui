@@ -7,7 +7,7 @@ function Loading({ width = "35px", height = "35px" }: LoadingType) {
   return (
     <div
       className={cn(
-        " border-4 border-solid border-[#061f2f] relative rounded-full"
+        "border-4 border-solid border-[#061f2f] relative rounded-full"
       )}
       style={{ width: width, height: height }}
     >

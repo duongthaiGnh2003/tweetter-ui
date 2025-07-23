@@ -23,13 +23,13 @@ export default class HttpService extends FetchApi {
   addCustomRouteHandler() {
     this.addRequestInterceptor(async (options: RequestOptionsWithUrl) => {
       const originalUrl = options.url ?? "";
-      let urlObj: URL;
+      // let urlObj: URL;
 
-      if (isUrl(originalUrl)) {
-        urlObj = new URL(originalUrl);
-      } else {
-        urlObj = new URL(originalUrl, this.baseUrl);
-      }
+      // if (isUrl(originalUrl)) {
+      //   urlObj = new URL(originalUrl);
+      // } else {
+      //   urlObj = new URL(originalUrl, this.baseUrl);
+      // }
 
       //   const urlPathname = urlObj.pathname
       //   const normalizedPathname = urlPathname.replace(/^\/api\/v1/, '')

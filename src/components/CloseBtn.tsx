@@ -1,7 +1,8 @@
 import { X } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
-
-function CloseBtn({ onClick }: { onClick?: () => void }) {
+import { ReactNode } from "react";
+type CloseBtnType = { onClick?: () => void; icon?: ReactNode };
+function CloseBtn({ onClick, icon = <X size={20} /> }: CloseBtnType) {
   return (
     <div>
       <Tooltip>
@@ -10,7 +11,7 @@ function CloseBtn({ onClick }: { onClick?: () => void }) {
             className=" hover:bg-[#eff3f41a] size-8 rounded-full flex items-center justify-center cursor-pointer"
             onClick={onClick}
           >
-            <X size={20} />
+            {icon}
           </div>
         </TooltipTrigger>
         <TooltipContent side="bottom" sideOffset={-10}>

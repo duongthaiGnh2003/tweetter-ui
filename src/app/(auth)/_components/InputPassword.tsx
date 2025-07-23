@@ -2,7 +2,6 @@
 import { Eye, EyeOff } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { type UseFormRegisterReturn } from "react-hook-form";
-import { Input } from "~/components/ui/input";
 import { cn } from "~/lib/utils";
 
 type InputPasswordProps = {

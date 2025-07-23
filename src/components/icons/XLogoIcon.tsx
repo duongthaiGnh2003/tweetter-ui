@@ -1,7 +1,7 @@
 import { cn } from "~/lib/utils";
 
 type Props = {
-  className?: String;
+  className?: string;
 };
 
 export const XLogoIcon = ({ className }: Props) => {

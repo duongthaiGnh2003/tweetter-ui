@@ -16,7 +16,7 @@ import ClickToSiginOrSigup from "./ClickToSiginOrSigup";
 
 const signinForm = z.object({
   userName: z.string().trim().nonempty(),
-  passWord: z.string().trim().nonempty("sdfksdhkj"),
+  passWord: z.string().trim().nonempty(),
 });
 
 export type SigninInput = z.infer<typeof signinForm>;
@@ -49,7 +49,7 @@ function Login() {
           <SiginWithGoogle className=" my-3 " />
           <ButtonToSign
             icon={<AppleIcon />}
-            text="Sign up with Apple"
+            text="Sign in with Apple"
             className=" my-3 hover:bg-[#e6e6e6]"
           />
           <div className=" flex items-center justify-center  my-3">
@@ -112,8 +112,9 @@ function Login() {
           <div className="w-full">
             <ButtonToSign
               text="Log in"
+              submit
               className={cn(
-                "py-6 px-8 select-none text-[17px] text-black my-6 font-bold hover:bg-[#d7dbdcs] w-full ",
+                "py-6 px-8 select-none text-[17px] text-black my-6 font-bold w-full hover:bg-[#d7dbdc]  ",
                 !watch("passWord") && "bg-[#787a7a]"
               )}
             />

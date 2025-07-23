@@ -1,6 +1,5 @@
 import { ChevronDown } from "lucide-react";
 import { Dispatch, SetStateAction, useState } from "react";
-import { UseFormRegisterReturn } from "react-hook-form";
 import { PickeType } from "~/components/enum";
 import {
   DropdownMenu,

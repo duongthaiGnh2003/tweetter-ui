@@ -30,7 +30,7 @@ function SiginWithGoogle({ className }: { className?: string }) {
     <a href={urlLoginOuth}>
       <ButtonToSign
         icon={<GoogleIcon />}
-        text="Sign up with Google"
+        text="Sign in with Google"
         className={`mb-4 hover:bg-[#f0f5fe] ${className}`}
       />
     </a>

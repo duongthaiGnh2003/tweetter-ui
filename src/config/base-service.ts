@@ -22,6 +22,15 @@ export type DefaultApiConfig = {
   baseUrl: string;
   headers?: HeadersInit;
 };
+interface NextFetchRequestConfig {
+  next?:
+    | {
+        revalidate?: number | false;
+        tags?: string[];
+      }
+    | undefined;
+}
+
 export type RequestOptionsWithUrl = RequestInit & {
   url?: string;
 } & NextFetchRequestConfig & { baseURL?: string };

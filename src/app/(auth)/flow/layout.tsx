@@ -64,6 +64,9 @@ export default function AuthLayout({ children }: { children?: ReactNode }) {
             <ButtonToSign
               text="Create account"
               className=" bg-[#1d9bf0] text-white font-bold text-[17px] mb-4 hover:bg-[#1a8cd8]"
+              onClick={() => {
+                router.push("/flow/signup");
+              }}
             />
             <p className="text-[11px] mb-5">
               By signing up, you agree to the{" "}

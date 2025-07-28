@@ -1,19 +1,18 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 
 import { SignupInput } from "~/app/(auth)/_components/FormRegister";
-import { getCurrentLogin, register } from "~/service/AuthServices";
+import { SigninInput } from "~/app/(auth)/_components/Login";
+import { getCurrentLogin, register, sigin } from "~/service/AuthServices";
 
-// const useSignin = () => {
-//   return useMutation({
-//     mutationFn: () => {
-//       return "";
-//     },
-//     networkMode: "always",
-//     retryDelay: 3000,
-//     onSuccess: () => {},
-//     onError: () => {},
-//   });
-// };
+const useSignin = () => {
+  return useMutation({
+    mutationFn: (data: SigninInput) => sigin(data),
+    networkMode: "always",
+    retryDelay: 3000,
+    onSuccess: () => {},
+    onError: () => {},
+  });
+};
 const useSigup = () => {
   return useMutation({
     mutationFn: (input: SignupInput) => register(input),
@@ -31,4 +30,4 @@ const useGetCurrentUser = () => {
   });
 };
 
-export { useGetCurrentUser, useSigup };
+export { useGetCurrentUser, useSigup, useSignin };

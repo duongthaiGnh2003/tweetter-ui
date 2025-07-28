@@ -8,6 +8,7 @@ import ButtonToSign from "../_components/ButtonToSign";
 
 import SiginWithGoogle from "../_components/SiginWithGoogle";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const footterTag = [
   "About",
@@ -39,9 +40,9 @@ export default function AuthLayout({ children }: { children?: ReactNode }) {
         className=" grid grid-cols-2 items-center flex-1
       "
       >
-        <div className=" flex items-center justify-center">
+        <Link href={"/home"} className=" flex items-center justify-center">
           <XLogoIcon className={" h-1/2 max-h-[380px] fill-current p-8"} />
-        </div>
+        </Link>
         <div className="p-5">
           <h1 className=" text-[64px] font-TwitterChirpExtendedHeavy my-12">
             Happening now

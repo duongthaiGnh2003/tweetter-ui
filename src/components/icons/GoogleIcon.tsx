@@ -1,16 +1,18 @@
-type Props = {
-  width?: string;
-  height?: string;
-};
+import React from "react";
+import { IconProps } from "./HomeIcon";
 
-export const GoogleIcon = ({ width = "15px", height = "15px" }: Props) => {
+export const GoogleIcon: React.FC<IconProps> = ({
+  width = 15,
+  height = 15,
+}) => {
   return (
     <svg
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 48 48"
       className="LgbsSe-Bz112c"
-      style={{ width: width, height: height }}
+      width={width}
+      height={height}
     >
       <g>
         <path

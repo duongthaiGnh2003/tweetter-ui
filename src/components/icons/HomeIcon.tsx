@@ -1,12 +1,12 @@
 import React from "react";
 
-interface Props extends React.SVGProps<SVGSVGElement> {
+export interface IconProps extends React.SVGProps<SVGSVGElement> {
   color?: string;
 }
 
-export const HomeIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({
-  width = "26px",
-  height = "26px",
+export const HomeIcon: React.FC<IconProps> = ({
+  width = 26,
+  height = 26,
   color = "currentColor",
 }) => {
   return (
@@ -14,7 +14,8 @@ export const HomeIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({
       viewBox="0 0 24 24"
       aria-hidden="true"
       className="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-1nao33i r-lwhw9o r-cnnz9e"
-      style={{ width: width, height: height }}
+      width={width}
+      height={height}
       fill={color}
     >
       <g>

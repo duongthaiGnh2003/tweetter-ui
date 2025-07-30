@@ -1,16 +1,15 @@
-type Props = {
-  width?: string;
-  height?: string;
-};
+import React from "react";
+import { IconProps } from "./HomeIcon";
 
-export const ListIcon = ({ width = "24px", height = "24px" }: Props) => {
+export const ListIcon: React.FC<IconProps> = ({ width = 24, height = 24 }) => {
   return (
     <svg
       viewBox="0 0 24 24"
       aria-hidden="true"
       className="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-1nao33i r-1q142lx r-1kihuf0 r-1472mwg r-di8nfa r-lrsllp"
       data-testid="icon"
-      style={{ width: width, height: height }}
+      width={width}
+      height={height}
       fill="currentColor"
     >
       <g>
@@ -20,14 +19,18 @@ export const ListIcon = ({ width = "24px", height = "24px" }: Props) => {
   );
 };
 
-export const BookMarkIcon = ({ width = "24px", height = "24px" }: Props) => {
+export const BookMarkIcon: React.FC<IconProps> = ({
+  width = 24,
+  height = 24,
+}) => {
   return (
     <svg
       viewBox="0 0 24 24"
       aria-hidden="true"
       className="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-1nao33i r-1q142lx r-1kihuf0 r-1472mwg r-di8nfa r-lrsllp"
       data-testid="icon"
-      style={{ width: width, height: height }}
+      width={width}
+      height={height}
       fill="currentColor"
     >
       <g>
@@ -37,14 +40,15 @@ export const BookMarkIcon = ({ width = "24px", height = "24px" }: Props) => {
   );
 };
 
-export const MoneIcon = ({ width = "24px", height = "24px" }: Props) => {
+export const MoneIcon: React.FC<IconProps> = ({ width = 24, height = 24 }) => {
   return (
     <svg
       viewBox="0 0 24 24"
       aria-hidden="true"
       className="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-1nao33i r-1q142lx r-1kihuf0 r-1472mwg r-di8nfa r-lrsllp"
       data-testid="icon"
-      style={{ width: width, height: height }}
+      width={width}
+      height={height}
       fill="currentColor"
     >
       <g>
@@ -53,14 +57,15 @@ export const MoneIcon = ({ width = "24px", height = "24px" }: Props) => {
     </svg>
   );
 };
-export const AdsIcon = ({ width = "24px", height = "24px" }: Props) => {
+export const AdsIcon: React.FC<IconProps> = ({ width = 24, height = 24 }) => {
   return (
     <svg
       viewBox="0 0 24 24"
       aria-hidden="true"
       className="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-1nao33i r-1q142lx r-1kihuf0 r-1472mwg r-di8nfa r-lrsllp"
       data-testid="icon"
-      style={{ width: width, height: height }}
+      width={width}
+      height={height}
       fill="currentColor"
     >
       <g>
@@ -70,14 +75,15 @@ export const AdsIcon = ({ width = "24px", height = "24px" }: Props) => {
   );
 };
 
-export const MicroIcon = ({ width = "24px", height = "24px" }: Props) => {
+export const MicroIcon: React.FC<IconProps> = ({ width = 24, height = 24 }) => {
   return (
     <svg
       viewBox="0 0 24 24"
       aria-hidden="true"
       className="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-1nao33i r-1q142lx r-1kihuf0 r-1472mwg r-di8nfa r-lrsllp"
       data-testid="icon"
-      style={{ width: width, height: height }}
+      width={width}
+      height={height}
       fill="currentColor"
     >
       <g>
@@ -87,14 +93,15 @@ export const MicroIcon = ({ width = "24px", height = "24px" }: Props) => {
   );
 };
 
-export const JobIcon = ({ width = "24px", height = "24px" }: Props) => {
+export const JobIcon: React.FC<IconProps> = ({ width = 24, height = 24 }) => {
   return (
     <svg
       viewBox="0 0 24 24"
       aria-hidden="true"
       className="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-1nao33i r-1q142lx r-1kihuf0 r-1472mwg r-di8nfa r-lrsllp"
       data-testid="icon"
-      style={{ width: width, height: height }}
+      width={width}
+      height={height}
       fill="currentColor"
     >
       <g>
@@ -103,18 +110,60 @@ export const JobIcon = ({ width = "24px", height = "24px" }: Props) => {
     </svg>
   );
 };
-export const SettingIcon = ({ width = "24px", height = "24px" }: Props) => {
+export const SettingIcon: React.FC<IconProps> = ({
+  width = 24,
+  height = 24,
+}) => {
   return (
     <svg
       viewBox="0 0 24 24"
       aria-hidden="true"
       className="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-1nao33i r-1q142lx r-1kihuf0 r-1472mwg r-di8nfa r-lrsllp"
       data-testid="icon"
-      style={{ width: width, height: height }}
+      width={width}
+      height={height}
       fill="currentColor"
     >
       <g>
         <path d="M10.54 1.75h2.92l1.57 2.36c.11.17.32.25.53.21l2.53-.59 2.17 2.17-.58 2.54c-.05.2.04.41.21.53l2.36 1.57v2.92l-2.36 1.57c-.17.12-.26.33-.21.53l.58 2.54-2.17 2.17-2.53-.59c-.21-.04-.42.04-.53.21l-1.57 2.36h-2.92l-1.58-2.36c-.11-.17-.32-.25-.52-.21l-2.54.59-2.17-2.17.58-2.54c.05-.2-.03-.41-.21-.53l-2.35-1.57v-2.92L4.1 8.97c.18-.12.26-.33.21-.53L3.73 5.9 5.9 3.73l2.54.59c.2.04.41-.04.52-.21l1.58-2.36zm1.07 2l-.98 1.47C10.05 6.08 9 6.5 7.99 6.27l-1.46-.34-.6.6.33 1.46c.24 1.01-.18 2.07-1.05 2.64l-1.46.98v.78l1.46.98c.87.57 1.29 1.63 1.05 2.64l-.33 1.46.6.6 1.46-.34c1.01-.23 2.06.19 2.64 1.05l.98 1.47h.78l.97-1.47c.58-.86 1.63-1.28 2.65-1.05l1.45.34.61-.6-.34-1.46c-.23-1.01.18-2.07 1.05-2.64l1.47-.98v-.78l-1.47-.98c-.87-.57-1.28-1.63-1.05-2.64l.34-1.46-.61-.6-1.45.34c-1.02.23-2.07-.19-2.65-1.05l-.97-1.47h-.78zM12 10.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5c.82 0 1.5-.67 1.5-1.5s-.68-1.5-1.5-1.5zM8.5 12c0-1.93 1.56-3.5 3.5-3.5 1.93 0 3.5 1.57 3.5 3.5s-1.57 3.5-3.5 3.5c-1.94 0-3.5-1.57-3.5-3.5z"></path>
+      </g>
+    </svg>
+  );
+};
+
+export const EarIcon: React.FC<IconProps> = ({ width = 24, height = 24 }) => {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-1gs4q39 r-10ptun7 r-1janqcz"
+      width={width}
+      height={height}
+      style={{ color: "rgb(29, 155, 240)" }}
+      fill="currentColor"
+    >
+      <g>
+        <path d="M12 1.75C6.34 1.75 1.75 6.34 1.75 12S6.34 22.25 12 22.25 22.25 17.66 22.25 12 17.66 1.75 12 1.75zm-.25 10.48L10.5 17.5l-2-1.5v-3.5L7.5 9 5.03 7.59c1.42-2.24 3.89-3.75 6.72-3.84L11 6l-2 .5L8.5 9l5 1.5-1.75 1.73zM17 14v-3l-1.5-3 2.88-1.23c1.17 1.42 1.87 3.24 1.87 5.23 0 1.3-.3 2.52-.83 3.61L17 14z"></path>
+      </g>
+    </svg>
+  );
+};
+
+export const CheckCriendIcon: React.FC<IconProps> = ({
+  width = 24,
+  height = 24,
+}) => {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-z80fyv r-19wmn03 r-jwli3a"
+      width={width}
+      height={height}
+      fill="currentColor"
+    >
+      <g>
+        <path d="M8.52 3.59c.8-1.1 2.04-1.84 3.48-1.84s2.68.74 3.49 1.84c1.34-.21 2.74.14 3.76 1.16s1.37 2.42 1.16 3.77c1.1.8 1.84 2.04 1.84 3.48s-.74 2.68-1.84 3.48c.21 1.34-.14 2.75-1.16 3.77s-2.42 1.37-3.76 1.16c-.8 1.1-2.05 1.84-3.49 1.84s-2.68-.74-3.48-1.84c-1.34.21-2.75-.14-3.77-1.16-1.01-1.02-1.37-2.42-1.16-3.77-1.09-.8-1.84-2.04-1.84-3.48s.75-2.68 1.84-3.48c-.21-1.35.14-2.75 1.16-3.77s2.43-1.37 3.77-1.16zm3.48.16c-.85 0-1.66.53-2.12 1.43l-.38.77-.82-.27c-.96-.32-1.91-.12-2.51.49-.6.6-.8 1.54-.49 2.51l.27.81-.77.39c-.9.46-1.43 1.27-1.43 2.12s.53 1.66 1.43 2.12l.77.39-.27.81c-.31.97-.11 1.91.49 2.51.6.61 1.55.81 2.51.49l.82-.27.38.77c.46.9 1.27 1.43 2.12 1.43s1.66-.53 2.12-1.43l.39-.77.82.27c.96.32 1.9.12 2.51-.49.6-.6.8-1.55.48-2.51l-.26-.81.76-.39c.91-.46 1.43-1.27 1.43-2.12s-.52-1.66-1.43-2.12l-.77-.39.27-.81c.32-.97.12-1.91-.48-2.51-.61-.61-1.55-.81-2.51-.49l-.82.27-.39-.77c-.46-.9-1.27-1.43-2.12-1.43zm4.74 5.68l-6.2 6.77-3.74-3.74 1.41-1.42 2.26 2.26 4.8-5.23 1.47 1.36z"></path>
       </g>
     </svg>
   );

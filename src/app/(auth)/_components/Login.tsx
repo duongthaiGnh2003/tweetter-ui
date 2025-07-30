@@ -90,7 +90,7 @@ function Login() {
 
           <ButtonToSign
             text="Forgot password?"
-            className=" bg-transparent border border-[#536471] my-6 hover:bg-[#eff3f41a] text-white font-bold "
+            className=" bg-transparent border border-[#536471] my-6 hover:bg-hoverColor text-white font-bold "
           />
 
           <ClickToSiginOrSigup />

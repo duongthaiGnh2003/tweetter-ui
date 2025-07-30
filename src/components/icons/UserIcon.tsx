@@ -1,15 +1,13 @@
-type Props = {
-  width?: string;
-  height?: string;
-};
+import { IconProps } from "./HomeIcon";
 
-export const UserIcon = ({ width = "26px", height = "26px" }: Props) => {
+export const UserIcon: React.FC<IconProps> = ({ width = 26, height = 26 }) => {
   return (
     <svg
       viewBox="0 0 24 24"
       aria-hidden="true"
       className="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-1nao33i r-lwhw9o r-cnnz9e"
-      style={{ width: width, height: height }}
+      width={width}
+      height={height}
       fill="currentColor"
     >
       <g>

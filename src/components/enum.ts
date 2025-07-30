@@ -7,3 +7,15 @@ export enum PickeType {
   Month = "Month",
   Year = "Year",
 }
+
+export enum PostViewMode {
+  ForYou,
+  Following,
+}
+
+export enum CanReply {
+  Everyone,
+  AccountsFollow,
+  VerifiedAccounts,
+  OnlyAccountsMention,
+}

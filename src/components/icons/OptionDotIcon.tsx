@@ -1,15 +1,16 @@
-type Props = {
-  width?: string;
-  height?: string;
-};
+import { IconProps } from "./HomeIcon";
 
-export const OptionDotIcon = ({ width = "18px", height = "18px" }: Props) => {
+export const OptionDotIcon: React.FC<IconProps> = ({
+  width = 18,
+  height = 18,
+}) => {
   return (
     <svg
       viewBox="0 0 24 24"
       aria-hidden="true"
       className="r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-lrvibr r-m6rgpd r-1nao33i"
-      style={{ width: width, height: height }}
+      width={width}
+      height={height}
       fill="currentColor"
     >
       <g>

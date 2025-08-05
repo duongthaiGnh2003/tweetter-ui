@@ -183,8 +183,8 @@ export default class FetchApi {
     if (!response.ok) {
       if (response.status === 401) {
         await this.delAuthorizationToken();
-        if (this.isClient && window.location.pathname !== "/login") {
-          window.location.replace("/login");
+        if (this.isClient && window.location.pathname !== "flow/signin") {
+          window.location.replace("/flow/signin");
         }
       }
 

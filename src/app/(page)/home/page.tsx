@@ -9,7 +9,6 @@ import CreatePost from "../_components/CreatePost";
 function Home() {
   const { data } = useGetCurrentUser();
   const [mode, setMode] = useState<PostViewMode>(PostViewMode.ForYou);
-
   return (
     <div>
       {data && (

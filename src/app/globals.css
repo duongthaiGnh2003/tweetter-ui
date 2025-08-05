@@ -103,3 +103,12 @@ body {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
+
+/* đặt css cho placehoder khi content trống */
+.ProseMirror p.is-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: #999;
+  float: left;
+  height: 0;
+  pointer-events: none;
+}

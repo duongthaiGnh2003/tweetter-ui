@@ -1,3 +1,4 @@
+import { TWEET } from "~/lib/endpoints";
 import FetchApi, {
   DefaultApiConfig,
   isUrl,
@@ -49,7 +50,8 @@ export default class HttpService extends FetchApi {
       //       options.url = urlObj.href
       //   }
 
-      if (options.url!.includes("/file") && options.body instanceof FormData) {
+      // options.url!.includes("medias") ||
+      if (options.body instanceof FormData) {
         // Remove manual setting of Content-Type to allow automatic boundary calculation
         if (options.headers) {
           const headers = options.headers as Record<string, string>;

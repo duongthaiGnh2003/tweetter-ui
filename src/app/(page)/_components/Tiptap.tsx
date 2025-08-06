@@ -1,15 +1,19 @@
 "use client";
 
 import { Placeholder } from "@tiptap/extensions";
-import { useEditor, EditorContent } from "@tiptap/react";
+import { useEditor, EditorContent, Editor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { useEffect } from "react";
+import Emoji from "@tiptap/extension-emoji";
+import EmojiPicker from "./PickEmoij";
 type TiptapType = {
   content: string;
   onChange: (content: string) => void;
   setProgress: (length: number) => void;
   isSetDefaultContent?: boolean;
   className?: string;
+
+  setTiptapMethod: (editor: Editor | null) => void;
 };
 const Tiptap = ({
   content = "<p></p>",
@@ -17,12 +21,18 @@ const Tiptap = ({
   setProgress,
   isSetDefaultContent = false,
   className,
+
+  setTiptapMethod,
 }: TiptapType) => {
   const editor = useEditor({
     extensions: [
       StarterKit,
       Placeholder.configure({
         placeholder: "What's happening",
+      }),
+      Emoji.configure({
+        enableEmoticons: true, // Gõ :) sẽ tự thành 😊
+        // enableShortcuts: true, // Gõ :smile: sẽ thành 😄
       }),
     ],
     content: content,
@@ -34,7 +44,6 @@ const Tiptap = ({
     // Don't render immediately on the server to avoid SSR issues
     immediatelyRender: false,
     onUpdate: ({ editor }) => {
-      console.log("Tip", editor.getText().length);
       const textValue = editor.getText();
       setProgress(textValue.length);
       if (textValue.startsWith(" ")) {
@@ -48,12 +57,24 @@ const Tiptap = ({
       }
     },
   });
-  //   console.log(editor?.getHTML());
+
   useEffect(() => {
     editor?.commands.setContent("");
   }, [isSetDefaultContent]);
+  useEffect(() => {
+    setTiptapMethod(editor);
+  }, [editor]);
 
-  return <EditorContent editor={editor} />;
+  return (
+    <div>
+      <EditorContent editor={editor} />
+      {/* <EmojiPicker
+        onSelect={(emoji: { native: string }) => {
+          editor?.commands.insertContent(emoji.native);
+        }}
+      /> */}
+    </div>
+  );
 };
 
 export default Tiptap;

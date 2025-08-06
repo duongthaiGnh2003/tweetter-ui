@@ -37,6 +37,8 @@ import { TweetAudience, TweetType } from "~/components/types/tweetType";
 import { uploadMediaService } from "~/service/TweetService";
 import Loading from "~/components/loading/LoadingIcon";
 import Tiptap from "./Tiptap";
+import EmojiPicker from "./PickEmoij";
+import { Editor } from "@tiptap/react";
 
 const canReplyList = [
   {
@@ -79,6 +81,8 @@ function CreatePost({ data }: { data: UserType }) {
   const [canReply, setCanReply] = useState<CanReply>(CanReply.Everyone);
   const [fileList, setFileList] = useState<File[]>([]);
   const [previewUrls, setPreviewUrls] = useState<string[]>([]);
+  const [showEmoij, setShowEmoij] = useState<boolean>(false);
+  const [editorTiptap, setTiptapMethod] = useState<Editor | null>(null);
 
   const mutation = useCreateTweet();
   const mutationfile = useUploadMedia();
@@ -113,7 +117,6 @@ function CreatePost({ data }: { data: UserType }) {
         audience: TweetAudience.Everyone,
         medias: resfile?.data || [],
       });
-
       setFileList([]);
 
       setIsSetInitContent(!isSetInitContent);
@@ -162,7 +165,8 @@ function CreatePost({ data }: { data: UserType }) {
                   setProgress={setProgress}
                   content={field.value}
                   onChange={field.onChange}
-                  className=" py-3 text-[20px] leading-none outline-none  border-none "
+                  setTiptapMethod={setTiptapMethod}
+                  className=" py-3 text-[20px]  outline-none  border-none "
                 />
               );
             }}
@@ -295,8 +299,24 @@ function CreatePost({ data }: { data: UserType }) {
                 {...register("file")}
               />
             </label>
-            <div className=" flex justify-center items-center cursor-pointer rounded-full hover:bg-hoverColor size-8">
-              <Smile color="#1d9bf0" size={20} />
+            <div className=" relative">
+              <div
+                className=" relative flex justify-center items-center cursor-pointer rounded-full hover:bg-hoverColor size-8"
+                onClick={() => {
+                  setShowEmoij(!showEmoij);
+                }}
+              >
+                <Smile color="#1d9bf0" size={20} />
+              </div>
+              {showEmoij && (
+                <div className=" absolute top-full left-[70%] translate-x-[-30%] ">
+                  <EmojiPicker
+                    onSelect={(emoji: { native: string }) => {
+                      editorTiptap?.commands.insertContent(emoji.native);
+                    }}
+                  />
+                </div>
+              )}
             </div>
             <div className=" flex justify-center items-center rounded-full   size-8">
               <MapPin color="#1d9bf0" size={20} className=" opacity-50" />

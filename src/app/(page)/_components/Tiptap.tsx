@@ -46,10 +46,11 @@ const Tiptap = ({
     onUpdate: ({ editor }) => {
       const textValue = editor.getText();
       setProgress(textValue.length);
-      if (textValue.startsWith(" ")) {
-        // nếu bắt đầu bằng dấu cahcs thì set nội dung vè ban đầu
-        editor.commands.setContent("");
-      } else if (textValue.length > 255) {
+      // if (textValue.startsWith(" ")) {
+      //   // nếu bắt đầu bằng dấu cahcs thì set nội dung vè ban đầu
+      //   // editor.commands.setContent("");
+      // } else
+      if (textValue.length > 255) {
         editor.commands.undo();
         return;
       } else {

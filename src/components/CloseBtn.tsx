@@ -1,18 +1,28 @@
 import { X } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 import { ReactNode } from "react";
-type CloseBtnType = { onClick?: () => void; icon?: ReactNode; title?: string };
+import { cn } from "~/lib/utils";
+type CloseBtnType = {
+  onClick?: () => void;
+  icon?: ReactNode;
+  title?: string;
+  className?: string;
+};
 function CloseBtn({
   onClick,
   icon = <X size={20} />,
   title = "Close",
+  className,
 }: CloseBtnType) {
   return (
     <div>
       <Tooltip>
         <TooltipTrigger asChild>
           <div
-            className=" hover:bg-hoverColor size-8 rounded-full flex items-center justify-center cursor-pointer"
+            className={cn(
+              " hover:bg-hoverColor size-8 rounded-full flex items-center justify-center cursor-pointer",
+              className
+            )}
             {...(onClick ? { onClick } : {})}
           >
             {icon}

@@ -43,7 +43,7 @@ const sideBarMenus = [
   {
     icon: <HomeIcon />,
     title: "Home",
-    to: "/",
+    to: "/home",
   },
   {
     icon: <Search />,

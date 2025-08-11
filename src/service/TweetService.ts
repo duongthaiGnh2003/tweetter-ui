@@ -1,5 +1,11 @@
+import { Message } from "react-hook-form";
 import { CreateFormType } from "~/app/(page)/_components/CreatePost";
-import { CreateTweetType, mediaResponse } from "~/components/types/tweetType";
+import {
+  CreateTweetType,
+  mediaResponse,
+  resTweetPostType,
+  TweetPostType,
+} from "~/components/types/tweetType";
 import HttpService from "~/config/http-service";
 import { TWEET } from "~/lib/endpoints";
 
@@ -17,5 +23,13 @@ export function uploadMediaService(files: File[]) {
     "/medias/upload-media-clound?mode=1",
     formData
   );
+  return res;
+}
+
+export function getNewFeedService(
+  limit: number,
+  page: number
+): Promise<resTweetPostType> {
+  const res = API.get(`${TWEET}?limit=${limit}&page=${page}`);
   return res;
 }

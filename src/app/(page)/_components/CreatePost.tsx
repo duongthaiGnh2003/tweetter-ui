@@ -37,8 +37,9 @@ import { TweetAudience, TweetType } from "~/components/types/tweetType";
 import { uploadMediaService } from "~/service/TweetService";
 import Loading from "~/components/loading/LoadingIcon";
 import Tiptap from "./Tiptap";
-import EmojiPicker from "./PickEmoij";
+// import EmojiPicker from "./PickEmoij";
 import { Editor } from "@tiptap/react";
+import { da } from "date-fns/locale";
 
 const canReplyList = [
   {
@@ -96,6 +97,9 @@ function CreatePost({ data }: { data: UserType }) {
     setValue,
     control,
   } = useForm<CreateFormType>({
+    defaultValues: {
+      content: "", // 👈 phải là chuỗi rỗng
+    },
     resolver: zodResolver(inputForm),
   });
   const [progress, setProgress] = useState(0);
@@ -104,22 +108,23 @@ function CreatePost({ data }: { data: UserType }) {
   const onSubmit = async (data: CreateFormType) => {
     try {
       let resfile;
-      if (fileList.length > 1) {
+      if (fileList.length > 0) {
         resfile = await mutationfile.mutateAsync(fileList);
       }
+      if (fileList.length > 0 || data.content) {
+        await mutation.mutateAsync({
+          type: TweetType.Tweet,
+          content: data.content || "",
+          parent_id: null,
+          hashtags: [],
+          mentions: [],
+          audience: TweetAudience.Everyone,
+          medias: resfile?.data || [],
+        });
+        setFileList([]);
 
-      const res = await mutation.mutateAsync({
-        type: TweetType.Tweet,
-        content: data.content,
-        parent_id: null,
-        hashtags: [],
-        mentions: [],
-        audience: TweetAudience.Everyone,
-        medias: resfile?.data || [],
-      });
-      setFileList([]);
-
-      setIsSetInitContent(!isSetInitContent);
+        setIsSetInitContent(!isSetInitContent);
+      }
     } catch (err) {
       console.log(err);
     }
@@ -132,13 +137,14 @@ function CreatePost({ data }: { data: UserType }) {
     setPreviewUrls(urls);
   }, [watch("file")]);
 
+  // console.log(errors);
   const handleRemoveFile = (index1: number) => {
     fileList.splice(index1, 1);
     setFileList(fileList);
     const newArr = previewUrls.filter((item, index) => index !== index1);
     setPreviewUrls(newArr);
   };
-
+  // console.log(getValues("content"));
   return (
     <form onSubmit={handleSubmit(onSubmit)} className=" px-4 relative flex">
       <div className="pt-3 mr-2">
@@ -163,7 +169,7 @@ function CreatePost({ data }: { data: UserType }) {
                 <Tiptap
                   isSetDefaultContent={isSetInitContent}
                   setProgress={setProgress}
-                  content={field.value}
+                  content={field.value || ""}
                   onChange={field.onChange}
                   setTiptapMethod={setTiptapMethod}
                   className=" py-3 text-[20px]  outline-none  border-none "
@@ -310,11 +316,11 @@ function CreatePost({ data }: { data: UserType }) {
               </div>
               {showEmoij && (
                 <div className=" absolute top-full left-[70%] translate-x-[-30%] ">
-                  <EmojiPicker
+                  {/* <EmojiPicker
                     onSelect={(emoji: { native: string }) => {
                       editorTiptap?.commands.insertContent(emoji.native);
                     }}
-                  />
+                  /> */}
                 </div>
               )}
             </div>

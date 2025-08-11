@@ -5,9 +5,13 @@ import { PostViewMode } from "~/components/enum";
 import { useGetCurrentUser } from "~/hook/userUser";
 import { cn } from "~/lib/utils";
 import CreatePost from "../_components/CreatePost";
+import TweetPostItem from "../_components/Tweet";
+import { useGetNewFeedTweet } from "~/hook/useTweet";
 
 function Home() {
   const { data } = useGetCurrentUser();
+  const { data: newFeed } = useGetNewFeedTweet(5, 1);
+
   const [mode, setMode] = useState<PostViewMode>(PostViewMode.ForYou);
   return (
     <div>
@@ -54,7 +58,9 @@ function Home() {
           <div className="border-b border-[#2f3336]">
             <CreatePost data={data} />
           </div>
-          <p>fdhsjkf gs</p>
+          {newFeed?.data.tweets.map((item, index) => {
+            return <TweetPostItem key={index} data={item} />;
+          })}
         </div>
       )}
     </div>

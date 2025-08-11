@@ -1,3 +1,4 @@
+import vidstack from "@vidstack/react/tailwind.cjs";
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
@@ -13,5 +14,10 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    vidstack({
+      selector: ".media-player",
+      prefix: "media",
+    }),
+  ],
 };

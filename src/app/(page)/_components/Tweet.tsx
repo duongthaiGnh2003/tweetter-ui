@@ -14,15 +14,16 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import CloseBtn from "~/components/CloseBtn";
-import { TweetPostType } from "~/components/types/tweetType";
+import { Media, MediaType, TweetPostType } from "~/components/types/tweetType";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
 } from "~/components/ui/dropdown-menu";
-import { generateAvatarUrl } from "~/lib/utils";
+import { cn, generateAvatarUrl } from "~/lib/utils";
 import HLSPlayer from "./HLSPlayer";
+
 const optionsListTweet = [
   {
     icons: <Frown size={20} />,
@@ -76,7 +77,7 @@ function TweetPostItem({ data }: { data: TweetPostType }) {
   // console.log(data);
   return (
     <div>
-      <div className=" flex justify-between items-center px-4 pt-3 cursor-pointer ">
+      <div className=" flex justify-between items-center px-4 pt-3 cursor-pointer mb-5 ">
         <div className=" flex flex-1 ">
           <Link href={dataUser.username}>
             <div className=" block size-10 rounded-full overflow-hidden mr-2 ">
@@ -92,7 +93,7 @@ function TweetPostItem({ data }: { data: TweetPostType }) {
               />
             </div>
           </Link>
-          <div>
+          <div className=" w-full">
             <div className=" flex items-center justify-between">
               <div className=" flex">
                 <Link href={dataUser.username} className=" flex text-[15px]">
@@ -140,15 +141,46 @@ function TweetPostItem({ data }: { data: TweetPostType }) {
               </DropdownMenu>
             </div>
             <div dangerouslySetInnerHTML={{ __html: data.content }} />
-
-            <HLSPlayer />
-            {/* {
-        data.medias.map((item,indexx)=>{
-            return <div>
-                {if(item.type === Media)}
+            <div
+              className={cn(
+                "mt-3 w-full grid   border border-[#2f3336] overflow-hidden rounded-2xl",
+                data.medias.length === 4
+                  ? "grid-cols-2 grid-rows-2 h-[300px]"
+                  : data.medias.length === 2
+                  ? "grid-cols-2 grid-rows-1 h-[300px]"
+                  : data.medias.length === 3 &&
+                    "grid-cols-2 grid-rows-2 h-[300px]"
+              )}
+            >
+              {data.medias.map((item, index) => {
+                if (item.type === MediaType.HLS) {
+                  return (
+                    <HLSPlayer
+                      src={item.url}
+                      smallVideo={data.medias.length > 1}
+                      key={index}
+                      className={cn(
+                        data.medias.length === 3 && index === 0 && "row-span-2"
+                      )}
+                    />
+                  );
+                } else if (item.type === MediaType.Image) {
+                  return (
+                    <Image
+                      key={index}
+                      src={item.url}
+                      alt=""
+                      width={360}
+                      height={360}
+                      className={cn(
+                        "object-cover w-full h-full",
+                        data.medias.length === 3 && index === 0 && "row-span-2"
+                      )} // bỏ w-full h-full; để Next tự scale xuống
+                    />
+                  );
+                }
+              })}
             </div>
-        })
-      } */}
           </div>
         </div>
       </div>

@@ -339,7 +339,8 @@ function CreatePost({ data }: { data: UserType }) {
               text="Post"
               className={cn(
                 "mx-4 w-[65px] h-[35px] font-bold bg-[#787a7a] cursor-default ",
-                getValues("content")?.length > 0 && "bg-white cursor-pointer"
+                getValues("content")?.length > 0 ||
+                  (fileList.length > 0 && "bg-white cursor-pointer")
               )}
             />
           </div>

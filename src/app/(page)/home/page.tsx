@@ -10,13 +10,13 @@ import { useGetNewFeedTweet } from "~/hook/useTweet";
 
 function Home() {
   const { data } = useGetCurrentUser();
-  const { data: newFeed } = useGetNewFeedTweet(5, 1);
+  const { data: newFeed } = useGetNewFeedTweet(10, 1);
 
   const [mode, setMode] = useState<PostViewMode>(PostViewMode.ForYou);
   return (
     <div>
       {data && (
-        <div className="border-l border-r border-[#2f3336] w-[600px]">
+        <div className="border-l border-r border-[#2f3336] w-[600px] h-screen overflow-y-scroll scrollbar-hide">
           <div className=" flex justify-center text-center text-[15px] items-center text-secondary border-b border-[#2f3336]">
             <div
               className=" h-[53px] px-4 w-full flex-col flex justify-center items-center cursor-pointer hover:bg-hoverColor hover:font-bold hover:text-foreground"

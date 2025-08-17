@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @config "../../tailwind.config.ts";
+
+@custom-variant displayfullscreen (@media (display-mode: fullscreen));
 @font-face {
   font-family: "Chirp";
   src: url("/fonts/Chirp-Regular.woff2") format("woff2");
@@ -142,13 +144,15 @@ body {
 }
 
 /* volume */
-
 .vds-button {
   --media-button-color: var(--media-controls-color, #f5f5f5);
   --media-button-size: 30px;
+  --media-fullscreen-button-size: 40px;
   --media-button-border-radius: 100px;
   --media-button-padding: 2px;
+  --media-button-hover-bg: rgb(255 255 255 / 0.2);
   --media-button-hover-transform: scale(1);
+  --media-button-touch-hover-bg: rgb(255 255 255 / 0.2);
 }
 .vds-button.startVideo {
   --media-button-hover-bg: transparent;

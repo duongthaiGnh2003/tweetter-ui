@@ -5,7 +5,7 @@ import { useEditor, EditorContent, Editor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { useEffect } from "react";
 import Emoji from "@tiptap/extension-emoji";
-import EmojiPicker from "./PickEmoij";
+import EmojiPicker from "./home/PickEmoij";
 type TiptapType = {
   content: string;
   onChange: (content: string) => void;

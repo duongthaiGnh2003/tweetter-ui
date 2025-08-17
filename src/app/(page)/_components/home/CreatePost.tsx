@@ -36,10 +36,11 @@ import { useCreateTweet, useUploadMedia } from "~/hook/useTweet";
 import { TweetAudience, TweetType } from "~/components/types/tweetType";
 import { uploadMediaService } from "~/service/TweetService";
 import Loading from "~/components/loading/LoadingIcon";
-import Tiptap from "./Tiptap";
+
 // import EmojiPicker from "./PickEmoij";
 import { Editor } from "@tiptap/react";
 import { da } from "date-fns/locale";
+import Tiptap from "../Tiptap";
 
 const canReplyList = [
   {

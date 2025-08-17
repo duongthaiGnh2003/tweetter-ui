@@ -130,19 +130,19 @@ function HLSPlayer({
               <PauseIcon className="pause-icon vds-icon" />
             </PlayButton>
             <div className=" flex items-center gap-1">
-              <div className="vds-time-group">
+              <div className="vds-time-group  ">
                 <Time
                   type="current"
-                  className="vds-time"
+                  className="vds-time  "
                   style={{ fontSize: smallVideo ? "12px" : "auto" }}
                 />
                 {!smallVideo && <div className="vds-time-divider">/</div>}
-                {!smallVideo && <Time type="duration" className="vds-time" />}
+                {!smallVideo && <Time type="duration" className="vds-time  " />}
               </div>
               {!smallVideo && (
                 <div className=" flex items-center gap-1">
                   <div
-                    className=" h-[30px] relative group"
+                    className=" h-[30px] displayfullscreen:h-[40px] relative group"
                     onMouseEnter={() => setIsVolumeHover(true)}
                     onMouseLeave={() => setIsVolumeHover(false)}
                   >
@@ -175,8 +175,8 @@ function HLSPlayer({
                   </div>
 
                   <DropdownMenu>
-                    <DropdownMenuTrigger className=" size-[30px] flex justify-center items-center outline-none cursor-pointer hover:bg-[#ffffff33] rounded-full">
-                      <Settings size={20} />
+                    <DropdownMenuTrigger className=" vds-button ">
+                      <Settings className="vds-icon" />
                     </DropdownMenuTrigger>
                     <DropdownMenuContent
                       className="pointer-events-auto  bg-background border border-black p-0  "

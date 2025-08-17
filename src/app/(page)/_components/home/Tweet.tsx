@@ -22,7 +22,7 @@ import {
   DropdownMenuItem,
 } from "~/components/ui/dropdown-menu";
 import { cn, generateAvatarUrl } from "~/lib/utils";
-import HLSPlayer from "./HLSPlayer";
+import HLSPlayer from "../HLSPlayer";
 
 const optionsListTweet = [
   {
@@ -166,17 +166,23 @@ function TweetPostItem({ data }: { data: TweetPostType }) {
                   );
                 } else if (item.type === MediaType.Image) {
                   return (
-                    <Image
+                    <Link
                       key={index}
-                      src={item.url}
-                      alt=""
-                      width={360}
-                      height={360}
-                      className={cn(
-                        "object-cover w-full h-full",
-                        data.medias.length === 3 && index === 0 && "row-span-2"
-                      )} // bỏ w-full h-full; để Next tự scale xuống
-                    />
+                      href={"/Tv792440/status/1956635467237183915/photo/2"}
+                    >
+                      <Image
+                        src={item.url}
+                        alt=""
+                        width={360}
+                        height={360}
+                        className={cn(
+                          "object-cover w-full h-full",
+                          data.medias.length === 3 &&
+                            index === 0 &&
+                            "row-span-2"
+                        )}
+                      />
+                    </Link>
                   );
                 }
               })}

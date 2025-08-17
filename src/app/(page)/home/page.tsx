@@ -4,9 +4,10 @@ import { useState } from "react";
 import { PostViewMode } from "~/components/enum";
 import { useGetCurrentUser } from "~/hook/userUser";
 import { cn } from "~/lib/utils";
-import CreatePost from "../_components/CreatePost";
-import TweetPostItem from "../_components/Tweet";
+
+import TweetPostItem from "../_components/home/Tweet";
 import { useGetNewFeedTweet } from "~/hook/useTweet";
+import CreatePost from "../_components/home/CreatePost";
 
 function Home() {
   const { data } = useGetCurrentUser();

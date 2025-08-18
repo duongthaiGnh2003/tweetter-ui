@@ -14,7 +14,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import CloseBtn from "~/components/CloseBtn";
-import { Media, MediaType, TweetPostType } from "~/components/types/tweetType";
+import { MediaType, TweetPostType } from "~/components/types/tweetType";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -168,7 +168,7 @@ function TweetPostItem({ data }: { data: TweetPostType }) {
                   return (
                     <Link
                       key={index}
-                      href={"/Tv792440/status/1956635467237183915/photo/2"}
+                      href={`/${data.user.username}/status/${data._id}/photo/${index}`}
                     >
                       <Image
                         src={item.url}

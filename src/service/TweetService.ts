@@ -1,10 +1,7 @@
-import { Message } from "react-hook-form";
-import { CreateFormType } from "~/app/(page)/_components/CreatePost";
 import {
   CreateTweetType,
   mediaResponse,
   resTweetPostType,
-  TweetPostType,
 } from "~/components/types/tweetType";
 import HttpService from "~/config/http-service";
 import { TWEET } from "~/lib/endpoints";

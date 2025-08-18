@@ -12,7 +12,7 @@ import {
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import z, { file } from "zod";
+import z from "zod";
 import ButtonToSign from "~/app/(auth)/_components/ButtonToSign";
 import { CanReply } from "~/components/enum";
 import { CheckCriendIcon, EarIcon } from "~/components/icons/iconsList";
@@ -27,19 +27,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import CloseBtn from "~/components/CloseBtn";
 import {
   Carousel,
-  CarouselApi,
   CarouselContent,
   CarouselItem,
 } from "~/components/ui/carousel";
 import { ProgressCircle } from "~/components/icons/ProgressCircle";
 import { useCreateTweet, useUploadMedia } from "~/hook/useTweet";
 import { TweetAudience, TweetType } from "~/components/types/tweetType";
-import { uploadMediaService } from "~/service/TweetService";
 import Loading from "~/components/loading/LoadingIcon";
 
 // import EmojiPicker from "./PickEmoij";
 import { Editor } from "@tiptap/react";
-import { da } from "date-fns/locale";
 import Tiptap from "../Tiptap";
 
 const canReplyList = [
@@ -91,7 +88,7 @@ function CreatePost({ data }: { data: UserType }) {
 
   const {
     register,
-    formState: { errors, isLoading, isSubmitting },
+    formState: { isLoading, isSubmitting },
     watch,
     getValues,
     handleSubmit,
@@ -130,13 +127,15 @@ function CreatePost({ data }: { data: UserType }) {
       console.log(err);
     }
   };
+  const files = getValues("file");
   useEffect(() => {
+    if (!files) return;
     setFileList(Array.from(getValues("file")));
     const urls = Array.from(getValues("file")).map((file) =>
       URL.createObjectURL(file as Blob | MediaSource)
     );
     setPreviewUrls(urls);
-  }, [watch("file")]);
+  }, [files, getValues]);
 
   // console.log(errors);
   const handleRemoveFile = (index1: number) => {

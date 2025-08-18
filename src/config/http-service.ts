@@ -1,7 +1,5 @@
-import { TWEET } from "~/lib/endpoints";
 import FetchApi, {
   DefaultApiConfig,
-  isUrl,
   RequestOptionsWithUrl,
 } from "./base-service";
 

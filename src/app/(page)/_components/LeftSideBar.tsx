@@ -1,17 +1,8 @@
-import { ca, cs } from "date-fns/locale";
-import { Mail, Search, Settings } from "lucide-react";
+import { Mail, Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
-import {
-  JSX,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-  useTransition,
-} from "react";
+import { useEffect, useRef, useState } from "react";
 
 import ButtonToSign from "~/app/(auth)/_components/ButtonToSign";
 import { BellIcon } from "~/components/icons/BellIcon";

@@ -32,7 +32,7 @@ function Login() {
   const {
     handleSubmit,
     register,
-    formState: { isLoading, isSubmitting, errors },
+    formState: { isLoading, isSubmitting },
     getValues,
     watch,
   } = useForm<z.infer<typeof signinForm>>({
@@ -53,6 +53,11 @@ function Login() {
       setErrormess("Incorrect email or password");
     }
   }
+  const handleNextStep = () => {
+    if (getValues("email")) {
+      setNextStep(true);
+    }
+  };
 
   return (
     <div className=" flex flex-col h-full items-center  ">
@@ -83,9 +88,7 @@ function Login() {
           <ButtonToSign
             text="Next"
             className=" select-none text-[15px] text-black my-3 font-bold hover:bg-[#d7dbdcs]"
-            onClick={() => {
-              getValues("email") && setNextStep(true);
-            }}
+            onClick={handleNextStep}
           />
 
           <ButtonToSign
@@ -138,7 +141,7 @@ function Login() {
             />
 
             <div className=" mb-6 flex gap-1  text-[15px]">
-              <p className=" text-[#71767b] ">Don't have an account? </p>
+              <p className=" text-[#71767b] ">Don&apos;t have an account? </p>
               <p className="text-[#1d9bf0] font-thin cursor-pointer hover:underline ">
                 Sign up
               </p>

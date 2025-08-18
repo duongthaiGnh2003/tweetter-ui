@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import type { FC, ReactNode } from "react";
+import type { FC } from "react";
 
 interface ModalWindowProps {
   params?: {

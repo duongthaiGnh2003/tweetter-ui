@@ -7,6 +7,7 @@ import SiginWithGoogle from "../../_components/SiginWithGoogle";
 import ButtonToSign from "../../_components/ButtonToSign";
 import { AppleIcon } from "~/components/icons/AppleIcon";
 import FormRegister from "../../_components/FormRegister";
+import Link from "next/link";
 
 function Signup() {
   const router = useRouter();
@@ -53,26 +54,26 @@ function Signup() {
                 />
                 <p className="text-[13px] text-secondary  ">
                   By signing up, you agree to the{" "}
-                  <a href="" className="text-[#1d9bf0] hover:underline">
+                  <Link href="" className="text-[#1d9bf0] hover:underline">
                     Terms of Service
-                  </a>{" "}
+                  </Link>{" "}
                   and{" "}
-                  <a href="" className="text-[#1d9bf0] hover:underline">
+                  <Link href="" className="text-[#1d9bf0] hover:underline">
                     Privacy Policy
-                  </a>
+                  </Link>
                   , including{" "}
-                  <a href="" className="text-[#1d9bf0] hover:underline">
+                  <Link href="" className="text-[#1d9bf0] hover:underline">
                     Cookie Use.
-                  </a>
+                  </Link>
                 </p>
                 <p className=" mt-7   text-[15px] text-secondary">
                   Have an account already?{" "}
-                  <a
+                  <Link
                     href="/flow/signin"
                     className="text-[#1d9bf0] hover:underline"
                   >
                     Log in
-                  </a>
+                  </Link>
                 </p>
               </div>
             </div>

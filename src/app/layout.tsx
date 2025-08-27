@@ -16,9 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={` antialiased`}>
         <ReduxProvider>
-          <ReactQueryProvider>
-            <div>{children}</div>
-          </ReactQueryProvider>
+          <ReactQueryProvider>{children}</ReactQueryProvider>
         </ReduxProvider>
       </body>
     </html>

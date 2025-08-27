@@ -3,6 +3,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { CreateTweetType } from "~/components/types/tweetType";
 import {
   createTweetService,
+  getATweetService,
   getNewFeedService,
   uploadMediaService,
 } from "~/service/TweetService";
@@ -23,6 +24,14 @@ const useGetNewFeedTweet = (limit: number, page: number) => {
     retryDelay: 3000,
   });
 };
+const useGetATweet = (id: string) => {
+  return useQuery({
+    queryKey: ["anTweet", id],
+    queryFn: () => getATweetService(id),
+    networkMode: "always",
+    retryDelay: 3000,
+  });
+};
 
 const useUploadMedia = () => {
   return useMutation({
@@ -31,4 +40,4 @@ const useUploadMedia = () => {
     retryDelay: 3000,
   });
 };
-export { useCreateTweet, useUploadMedia, useGetNewFeedTweet };
+export { useCreateTweet, useUploadMedia, useGetNewFeedTweet, useGetATweet };

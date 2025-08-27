@@ -201,12 +201,13 @@ function LeftSideBar() {
     if (typeof window !== "undefined") {
       handleHideAndBlockMenu();
       setIsReady(true);
+
+      window.addEventListener("resize", handleHideAndBlockMenu);
+      return () => {
+        window.removeEventListener("resize", handleHideAndBlockMenu);
+      };
     }
   }, []);
-
-  if (typeof window !== "undefined") {
-    window.addEventListener("resize", handleHideAndBlockMenu);
-  }
   return (
     <div className=" w-[275px] px-1 relative">
       <div

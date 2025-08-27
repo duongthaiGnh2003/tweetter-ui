@@ -1,5 +1,6 @@
 "use client";
 import {
+  Bookmark,
   ChartNoAxesColumn,
   CircleSlash,
   Code,
@@ -7,9 +8,12 @@ import {
   Flag,
   Frown,
   NotepadText,
+  Share,
   UserRoundPlus,
   Volume,
   VolumeX,
+  Link as LinkIcon,
+  ArrowDownToLine,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -23,6 +27,8 @@ import {
 } from "~/components/ui/dropdown-menu";
 import { cn, generateAvatarUrl } from "~/lib/utils";
 import HLSPlayer from "../HLSPlayer";
+import ActiveTweet from "./ActiveTweet";
+import ShareTweetBtn from "./ShareTweetBtn";
 
 const optionsListTweet = [
   {
@@ -74,7 +80,7 @@ const optionsListTweet = [
 
 function TweetPostItem({ data }: { data: TweetPostType }) {
   const dataUser = data.user;
-  // console.log(data);
+
   return (
     <div>
       <div className=" flex justify-between items-center px-4 pt-3 cursor-pointer mb-5 ">
@@ -155,37 +161,66 @@ function TweetPostItem({ data }: { data: TweetPostType }) {
               {data.medias.map((item, index) => {
                 if (item.type === MediaType.HLS) {
                   return (
+                    // <Link
+                    //   key={index}
+                    //   href={`/${data.user.username}/status/${data._id}/media?index=${index}`}
+                    //   className={cn(
+                    //     data.medias.length === 3 && index === 0 && "row-span-2"
+                    //   )}
+                    // >
                     <HLSPlayer
-                      src={item.url}
+                      data={{
+                        media: item,
+                        userName: dataUser.username as string,
+                        index: index,
+                        tweetId: data._id as string,
+                      }}
                       smallVideo={data.medias.length > 1}
                       key={index}
                       className={cn(
                         data.medias.length === 3 && index === 0 && "row-span-2"
                       )}
                     />
+                    // </Link>
                   );
                 } else if (item.type === MediaType.Image) {
                   return (
                     <Link
                       key={index}
-                      href={`/${data.user.username}/status/${data._id}/photo/${index}`}
+                      href={`/${data.user.username}/status/${data._id}/media?index=${index}`}
+                      className={cn(
+                        data.medias.length === 3 && index === 0 && "row-span-2"
+                      )}
+                      scroll={false}
                     >
                       <Image
                         src={item.url}
                         alt=""
                         width={360}
                         height={360}
-                        className={cn(
-                          "object-cover w-full h-full",
-                          data.medias.length === 3 &&
-                            index === 0 &&
-                            "row-span-2"
-                        )}
+                        loading="lazy"
+                        className={cn("object-cover w-full h-full")}
                       />
                     </Link>
                   );
                 }
               })}
+            </div>
+            <div className="mt-3 flex items-center justify-between text-secondary">
+              <ActiveTweet data={data} />
+
+              <div className=" flex items-baseline text-[14px]  gap-[2px]">
+                <div>
+                  <CloseBtn
+                    icon={<Bookmark size={18} />}
+                    title="Bookmark"
+                    className=" hover:bg-[#00ba7c1a] hover:text-[#1d9bf0]"
+                  />
+                </div>
+                <div>
+                  <ShareTweetBtn data={data} />
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -17,6 +17,7 @@ export enum MediaType {
 }
 export type Media = {
   url: string;
+  thumbnail: string;
   type: MediaType;
 };
 
@@ -62,10 +63,14 @@ export interface TweetPostType {
   updated_at: Date;
   user: UserType;
   _id: string;
+  user_views: number;
 }
 
 export interface resTweetPostType extends Message {
   data: Pagination & {
     tweets: TweetPostType[];
   };
+}
+export interface resATweetPostType extends Message {
+  data: TweetPostType;
 }

@@ -196,3 +196,12 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.centerItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+:where([data-media-provider] video) {
+  height: 100% !important;
+}

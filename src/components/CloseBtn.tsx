@@ -7,12 +7,14 @@ type CloseBtnType = {
   icon?: ReactNode;
   title?: string;
   className?: string;
+  children?: ReactNode;
 };
 function CloseBtn({
   onClick,
   icon = <X size={20} />,
   title = "Close",
   className,
+  children,
 }: CloseBtnType) {
   return (
     <div>
@@ -26,6 +28,7 @@ function CloseBtn({
             {...(onClick ? { onClick } : {})}
           >
             {icon}
+            {children}
           </div>
         </TooltipTrigger>
         <TooltipContent side="bottom" sideOffset={-10}>

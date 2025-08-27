@@ -9,6 +9,7 @@ import {
   MuteButton,
   PIPButton,
   PlayButton,
+  Poster,
   Spinner,
   Time,
   TimeSlider,
@@ -40,8 +41,10 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "~/components/ui/dropdown-menu";
-import { cn } from "~/lib/utils";
-import { useRef, useState } from "react";
+import { cn, createLocalstorage, getLocalstorage } from "~/lib/utils";
+import { useEffect, useRef, useState } from "react";
+import { Media } from "~/components/types/tweetType";
+import { useRouter } from "next/navigation";
 function ClickToPlayOverlay() {
   const remote = useMediaRemote();
   const isPlaying = useMediaState("playing"); // true nếu đang phát
@@ -63,11 +66,16 @@ function ClickToPlayOverlay() {
 }
 
 function HLSPlayer({
-  src,
+  data,
   className,
   smallVideo,
 }: {
-  src: string;
+  data: {
+    media: Media;
+    userName?: string;
+    tweetId?: string;
+    index?: number;
+  };
   className?: string;
   smallVideo?: boolean;
 }) {
@@ -75,16 +83,67 @@ function HLSPlayer({
   const [isVolumeHover, setIsVolumeHover] = useState(false);
   const { qualities, quality } = useMediaStore(playerRef);
   const remote = useMediaRemote(playerRef);
+  const router = useRouter();
+  const isPlaying = useMediaState("playing", playerRef);
+
+  function handlePlay(element: MediaPlayerInstance | null) {
+    // Gửi sự kiện custom ra ngoài
+    window.dispatchEvent(new CustomEvent("pause-others", { detail: element }));
+  }
+  useEffect(() => {
+    const element = playerRef.current;
+
+    element?.addEventListener("play", () => {
+      handlePlay(element);
+    });
+
+    return () => {
+      element?.removeEventListener("play", () => {
+        handlePlay(element);
+      });
+    };
+  }, []);
+
+  useEffect(() => {
+    function handlePauseOthers(e: Event) {
+      const customEvent = e as CustomEvent;
+      if (customEvent.detail !== playerRef.current) {
+        remote.pause();
+      }
+    }
+
+    window.addEventListener("pause-others", handlePauseOthers as EventListener);
+    return () => {
+      window.removeEventListener(
+        "pause-others",
+        handlePauseOthers as EventListener
+      );
+    };
+  }, [remote]);
 
   return (
     <MediaPlayer
       ref={playerRef}
       playsInline
-      src={src}
-      aspectRatio="1/1"
-      className={cn(" w-full h-full", className)}
+      src={data.media.url}
+      // aspectRatio="1/1"
+      className={cn("  w-full h-full", className)}
+      onClick={() => {
+        if (isPlaying && smallVideo) {
+          router.push(
+            `/${data.userName}/status/${data.tweetId}/media?index=${data.index}`,
+            { scroll: false }
+          );
+        }
+      }}
     >
-      <MediaProvider />
+      <MediaProvider>
+        <Poster
+          className="vds-poster object-cover "
+          src={data.media.thumbnail}
+          alt=""
+        />
+      </MediaProvider>
       <ClickToPlayOverlay />
       <div className=" vds-buffering-indicator">
         <Spinner.Root className="vds-buffering-spinner">
@@ -155,7 +214,7 @@ function HLSPlayer({
                     <div className={isVolumeHover ? "block" : "hidden"}>
                       <div
                         className="absolute bottom-full left-1/2 -translate-x-1/2
-                  -mb-2 w-6 h-[90px] "
+                    -mb-2 w-6 h-[90px] "
                       />
 
                       <VolumeSlider.Root

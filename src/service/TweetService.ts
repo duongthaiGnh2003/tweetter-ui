@@ -1,6 +1,7 @@
 import {
   CreateTweetType,
   mediaResponse,
+  resATweetPostType,
   resTweetPostType,
 } from "~/components/types/tweetType";
 import HttpService from "~/config/http-service";
@@ -28,5 +29,10 @@ export function getNewFeedService(
   page: number
 ): Promise<resTweetPostType> {
   const res = API.get(`${TWEET}?limit=${limit}&page=${page}`);
+  return res;
+}
+
+export function getATweetService(id: string): Promise<resATweetPostType> {
+  const res = API.get(`${TWEET}/${id}`);
   return res;
 }

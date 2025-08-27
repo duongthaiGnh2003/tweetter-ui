@@ -135,7 +135,7 @@ function CreatePost({ data }: { data: UserType }) {
       URL.createObjectURL(file as Blob | MediaSource)
     );
     setPreviewUrls(urls);
-  }, [files, getValues]);
+  }, [watch("file")]);
 
   // console.log(errors);
   const handleRemoveFile = (index1: number) => {

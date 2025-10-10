@@ -21,7 +21,7 @@ export default class HttpService extends FetchApi {
 
   addCustomRouteHandler() {
     this.addRequestInterceptor(async (options: RequestOptionsWithUrl) => {
-      const originalUrl = options.url ?? "";
+      // const originalUrl = options.url ?? "";
       // let urlObj: URL;
 
       // if (isUrl(originalUrl)) {

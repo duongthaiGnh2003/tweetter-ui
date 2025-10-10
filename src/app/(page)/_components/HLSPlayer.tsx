@@ -41,7 +41,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "~/components/ui/dropdown-menu";
-import { cn, createLocalstorage, getLocalstorage } from "~/lib/utils";
+import { cn } from "~/lib/utils";
 import { useEffect, useRef, useState } from "react";
 import { Media } from "~/components/types/tweetType";
 import { useRouter } from "next/navigation";

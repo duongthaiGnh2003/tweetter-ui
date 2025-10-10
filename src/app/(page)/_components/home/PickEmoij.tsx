@@ -1,10 +1,10 @@
 // EmojiPicker.tsx
 import React from "react";
 // import Picker from "@emoji-mart/react";
-import data from "@emoji-mart/data";
+// import data from "@emoji-mart/data";
 
 interface EmojiPickerProps {
-  onSelect: (emoji: any) => void;
+  onSelect: (emoji: unknown) => void;
 }
 
 const EmojiPicker: React.FC<EmojiPickerProps> = ({ onSelect }) => {

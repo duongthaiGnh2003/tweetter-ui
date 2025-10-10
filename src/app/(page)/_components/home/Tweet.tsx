@@ -8,12 +8,9 @@ import {
   Flag,
   Frown,
   NotepadText,
-  Share,
   UserRoundPlus,
   Volume,
   VolumeX,
-  Link as LinkIcon,
-  ArrowDownToLine,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";

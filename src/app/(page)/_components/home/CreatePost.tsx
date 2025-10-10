@@ -92,7 +92,6 @@ function CreatePost({ data }: { data: UserType }) {
     watch,
     getValues,
     handleSubmit,
-    setValue,
     control,
   } = useForm<CreateFormType>({
     defaultValues: {

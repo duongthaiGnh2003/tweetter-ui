@@ -3,8 +3,8 @@ import { GoogleIcon } from "~/components/icons/GoogleIcon";
 import ButtonToSign from "./ButtonToSign";
 import { useEffect, useState } from "react";
 
-function SiginWithGoogle({ className }: { className?: string }) {
-  const [urlLoginOuth, setUrlLoginOuth] = useState<string>("");
+function SigninWithGoogle({ className }: { className?: string }) {
+  const [urlLoginOauth, setUrlLoginOauth] = useState<string>("");
 
   const getGoogleAuthUrl = () => {
     const baseUrl = "https://accounts.google.com/o/oauth2/v2/auth";
@@ -19,7 +19,7 @@ function SiginWithGoogle({ className }: { className?: string }) {
       prompt: "consent",
       access_type: "offline",
     });
-    setUrlLoginOuth(`${baseUrl}?${params.toString()}`);
+    setUrlLoginOauth(`${baseUrl}?${params.toString()}`);
   };
 
   useEffect(() => {
@@ -27,7 +27,7 @@ function SiginWithGoogle({ className }: { className?: string }) {
   }, []);
 
   return (
-    <a href={urlLoginOuth}>
+    <a href={urlLoginOauth}>
       <ButtonToSign
         icon={<GoogleIcon />}
         text="Sign in with Google"
@@ -37,4 +37,4 @@ function SiginWithGoogle({ className }: { className?: string }) {
   );
 }
 
-export default SiginWithGoogle;
+export default SigninWithGoogle;

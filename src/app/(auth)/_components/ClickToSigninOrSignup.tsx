@@ -1,18 +1,18 @@
 import { useRouter } from "next/navigation";
-import { SiginOrSigup } from "~/components/enum";
+import { SigninOrSignup } from "~/components/enum";
 
-type ClickToSiginOrSigupType = {
-  to?: SiginOrSigup;
+type ClickToSigninOrSignupType = {
+  to?: SigninOrSignup;
 };
-function ClickToSiginOrSigup({
-  to = SiginOrSigup.Sigup,
-}: ClickToSiginOrSigupType) {
+function ClickToSigninOrSignup({
+  to = SigninOrSignup.Signup,
+}: ClickToSigninOrSignupType) {
   const router = useRouter();
   const handleClick = () => {
-    if (to === SiginOrSigup.Sigup) {
+    if (to === SigninOrSignup.Signup) {
       router.push("/flow/signup?mode=social");
     }
-    if (to === SiginOrSigup.Sigin) {
+    if (to === SigninOrSignup.Signin) {
       router.push("/flow/signin");
     }
   };
@@ -29,4 +29,4 @@ function ClickToSiginOrSigup({
   );
 }
 
-export default ClickToSiginOrSigup;
+export default ClickToSigninOrSignup;

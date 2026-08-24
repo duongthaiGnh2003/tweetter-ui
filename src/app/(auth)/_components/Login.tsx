@@ -1,6 +1,6 @@
 "use client";
 
-import SiginWithGoogle from "./SiginWithGoogle";
+import SigninWithGoogle from "./SigninWithGoogle";
 import ButtonToSign from "./ButtonToSign";
 import { AppleIcon } from "~/components/icons/AppleIcon";
 
@@ -12,8 +12,8 @@ import InputPassword from "./InputPassword";
 import { cn } from "~/lib/utils";
 import { useState } from "react";
 
-import ClickToSiginOrSigup from "./ClickToSiginOrSigup";
-import { useSignin } from "~/hook/userUser";
+import ClickToSigninOrSignup from "./ClickToSigninOrSignup";
+import { useSignin } from "~/hook/useUser";
 import { setCookie } from "~/config/base-service";
 import Loading from "~/components/loading/LoadingIcon";
 import { useRouter } from "next/navigation";
@@ -27,7 +27,7 @@ export type SigninInput = z.infer<typeof signinForm>;
 
 function Login() {
   const [nextStep, setNextStep] = useState<boolean>(false);
-  const [errormess, setErrormess] = useState<string>();
+  const [errorMessage, setErrorMessage] = useState<string>();
 
   const {
     handleSubmit,
@@ -50,7 +50,7 @@ function Login() {
       router.push("/home");
     } catch (err) {
       console.log(err);
-      setErrormess("Incorrect email or password");
+      setErrorMessage("Incorrect email or password");
     }
   }
   const handleNextStep = () => {
@@ -64,7 +64,7 @@ function Login() {
       {!nextStep && (
         <div className="px-8 pb-12">
           <p className=" my-5 text-[32px] font-bold ">Sign in to X</p>
-          <SiginWithGoogle className=" my-3 " />
+          <SigninWithGoogle className=" my-3 " />
           <ButtonToSign
             icon={<AppleIcon />}
             text="Sign in with Apple"
@@ -87,7 +87,7 @@ function Login() {
 
           <ButtonToSign
             text="Next"
-            className=" select-none text-[15px] text-black my-3 font-bold hover:bg-[#d7dbdcs]"
+            className=" select-none text-[15px] text-black my-3 font-bold hover:bg-[#d7dbdc]"
             onClick={handleNextStep}
           />
 
@@ -96,7 +96,7 @@ function Login() {
             className=" bg-transparent border border-[#536471] my-6 hover:bg-hoverColor text-white font-bold "
           />
 
-          <ClickToSiginOrSigup />
+          <ClickToSigninOrSignup />
         </div>
       )}
 
@@ -117,16 +117,16 @@ function Login() {
 
             <div className="pb-3">
               <InputPassword
-                placeholder="PassWord"
+                placeholder="Password"
                 register={register("password")}
-                id="passWord"
+                id="password"
                 value={watch("password")}
               />
               <p className="text-[#1d9bf0] text-[13px] font-thin cursor-pointer hover:underline inline-block ">
                 Forgot password?
               </p>
-              {errormess && (
-                <p className="mt-1 text-[#f4212e] text-[17px]">{errormess}</p>
+              {errorMessage && (
+                <p className="mt-1 text-[#f4212e] text-[17px]">{errorMessage}</p>
               )}
             </div>
           </div>

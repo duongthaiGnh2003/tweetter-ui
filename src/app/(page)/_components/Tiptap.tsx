@@ -5,7 +5,7 @@ import { useEditor, EditorContent, Editor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { useEffect } from "react";
 import Emoji from "@tiptap/extension-emoji";
-import EmojiPicker from "./home/PickEmoij";
+import EmojiPicker from "./home/PickEmoji";
 type TiptapType = {
   content: string;
   onChange: (content: string) => void;
@@ -47,7 +47,7 @@ const Tiptap = ({
       const textValue = editor.getText();
       setProgress(textValue.length);
       // if (textValue.startsWith(" ")) {
-      //   // nếu bắt đầu bằng dấu cahcs thì set nội dung vè ban đầu
+      //   // nếu bắt đầu bằng dấu cách thì set nội dung về ban đầu
       //   // editor.commands.setContent("");
       // } else
       if (textValue.length > 255) {

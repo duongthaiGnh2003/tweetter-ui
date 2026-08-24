@@ -19,7 +19,7 @@ export const ListIcon: React.FC<IconProps> = ({ width = 24, height = 24 }) => {
   );
 };
 
-export const BookMarkIcon: React.FC<IconProps> = ({
+export const BookmarkIcon: React.FC<IconProps> = ({
   width = 24,
   height = 24,
 }) => {
@@ -40,7 +40,7 @@ export const BookMarkIcon: React.FC<IconProps> = ({
   );
 };
 
-export const MoneIcon: React.FC<IconProps> = ({ width = 24, height = 24 }) => {
+export const MonetizeIcon: React.FC<IconProps> = ({ width = 24, height = 24 }) => {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -131,7 +131,7 @@ export const SettingIcon: React.FC<IconProps> = ({
   );
 };
 
-export const EarIcon: React.FC<IconProps> = ({ width = 24, height = 24 }) => {
+export const EarthIcon: React.FC<IconProps> = ({ width = 24, height = 24 }) => {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -149,7 +149,7 @@ export const EarIcon: React.FC<IconProps> = ({ width = 24, height = 24 }) => {
   );
 };
 
-export const CheckCriendIcon: React.FC<IconProps> = ({
+export const CheckCircleIcon: React.FC<IconProps> = ({
   width = 24,
   height = 24,
 }) => {

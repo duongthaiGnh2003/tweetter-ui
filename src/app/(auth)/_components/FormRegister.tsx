@@ -5,10 +5,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import DatePicker from "./PickDate";
 import { useState } from "react";
 
-import { PickeType } from "~/components/enum";
+import { PickerType } from "~/components/enum";
 import ButtonToSign from "./ButtonToSign";
 import { cn } from "~/lib/utils";
-import { useSigup } from "~/hook/userUser";
+import { useSignup } from "~/hook/useUser";
 import InputPassword from "./InputPassword";
 import {
   CarouselContent,
@@ -70,7 +70,7 @@ function FormRegister() {
     resolver: zodResolver(registerForm),
   });
   const router = useRouter();
-  const mutation = useSigup();
+  const mutation = useSignup();
 
   const onsubmit = async (data: z.infer<typeof registerForm>) => {
     if (day && month && year) {
@@ -183,12 +183,12 @@ function FormRegister() {
                   </div>
                   <div className="mt-4 flex gap-3">
                     <DatePicker
-                      type={PickeType.Month}
+                      type={PickerType.Month}
                       value={month}
                       setValue={setMonth}
                     />
                     <DatePicker
-                      type={PickeType.Day}
+                      type={PickerType.Day}
                       value={day}
                       month={month}
                       year={year}
@@ -196,7 +196,7 @@ function FormRegister() {
                       className="w-[90px]"
                     />
                     <DatePicker
-                      type={PickeType.Year}
+                      type={PickerType.Year}
                       value={year}
                       setValue={setYear}
                       className="w-[115px]"
@@ -207,7 +207,7 @@ function FormRegister() {
                   <ButtonToSign
                     text="Next"
                     className={cn(
-                      "py-6 px-8 select-none text-[17px] text-black my-6 font-bold hover:bg-[#d7dbdcs] w-full bg-[#787a7a] cursor-default ",
+                      "py-6 px-8 select-none text-[17px] text-black my-6 font-bold hover:bg-[#d7dbdc] w-full bg-[#787a7a] cursor-default ",
                       watch("name") &&
                         watch("email") &&
                         day &&

@@ -3,7 +3,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import CloseBtn from "~/components/CloseBtn";
 import { XLogoIcon } from "~/components/icons/XLogoIcon";
-import SiginWithGoogle from "../../_components/SiginWithGoogle";
+import SigninWithGoogle from "../../_components/SigninWithGoogle";
 import ButtonToSign from "../../_components/ButtonToSign";
 import { AppleIcon } from "~/components/icons/AppleIcon";
 import FormRegister from "../../_components/FormRegister";
@@ -33,7 +33,7 @@ function Signup() {
               <div className="px-8 pb-12 flex flex-col gap-3 max-w-[365px]">
                 <p className=" mt-5  text-[32px] font-bold ">Join X today</p>
 
-                <SiginWithGoogle className="mb-3" />
+                <SigninWithGoogle className="mb-3" />
 
                 <ButtonToSign
                   icon={<AppleIcon />}

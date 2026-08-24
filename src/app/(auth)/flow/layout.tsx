@@ -6,11 +6,11 @@ import { ReactNode } from "react";
 
 import ButtonToSign from "../_components/ButtonToSign";
 
-import SiginWithGoogle from "../_components/SiginWithGoogle";
+import SigninWithGoogle from "../_components/SigninWithGoogle";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-const footterTag = [
+const footerTag = [
   "About",
   "Download the X app",
   "Grok",
@@ -51,7 +51,7 @@ export default function AuthLayout({ children }: { children?: ReactNode }) {
             Join today.
           </h3>
           <div className=" inline-block">
-            <SiginWithGoogle />
+            <SigninWithGoogle />
             <ButtonToSign
               icon={<AppleIcon />}
               text="Sign up with Apple"
@@ -98,7 +98,7 @@ export default function AuthLayout({ children }: { children?: ReactNode }) {
         </div>
       </div>
       <div className=" flex items-center justify-center flex-wrap px-4 py-3 ">
-        {footterTag.map((item, index) => {
+        {footerTag.map((item, index) => {
           return (
             <a
               key={index}

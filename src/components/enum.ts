@@ -1,8 +1,8 @@
-export enum SiginOrSigup {
-  Sigin = "Sign in",
-  Sigup = "Sign up",
+export enum SigninOrSignup {
+  Signin = "Sign in",
+  Signup = "Sign up",
 }
-export enum PickeType {
+export enum PickerType {
   Day = "Day",
   Month = "Month",
   Year = "Year",

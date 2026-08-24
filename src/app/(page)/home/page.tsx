@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { PostViewMode } from "~/components/enum";
-import { useGetCurrentUser } from "~/hook/userUser";
+import { useGetCurrentUser } from "~/hook/useUser";
 import { cn } from "~/lib/utils";
 
 import TweetPostItem from "../_components/home/Tweet";

@@ -9,11 +9,11 @@ import { BellIcon } from "~/components/icons/BellIcon";
 import { HomeIcon } from "~/components/icons/HomeIcon";
 import {
   AdsIcon,
-  BookMarkIcon,
+  BookmarkIcon,
   JobIcon,
   ListIcon,
   MicroIcon,
-  MoneIcon,
+  MonetizeIcon,
   SettingIcon,
 } from "~/components/icons/iconsList";
 import { OptionDotIcon } from "~/components/icons/OptionDotIcon";
@@ -27,7 +27,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "~/components/ui/dropdown-menu";
-import { useGetCurrentUser } from "~/hook/userUser";
+import { useGetCurrentUser, useLogout } from "~/hook/useUser";
 import { cn, generateAvatarUrl } from "~/lib/utils";
 
 const sideBarMenus = [
@@ -60,7 +60,7 @@ const sideBarMenus = [
   },
 
   {
-    icon: <BookMarkIcon />,
+    icon: <BookmarkIcon />,
     title: "Bookmarks",
     to: "Bookmarks",
   },
@@ -95,7 +95,7 @@ const sideBarMenus = [
 ];
 const defaultOptionList = [
   {
-    icon: <MoneIcon />,
+    icon: <MonetizeIcon />,
     title: "Monetization",
     to: "Monetization",
   },
@@ -120,6 +120,7 @@ const defaultOptionList = [
 
 function LeftSideBar() {
   const { data } = useGetCurrentUser();
+  const { mutate: logout } = useLogout();
   const sidebarRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLAnchorElement | null)[]>([]);
   const [OptionList, setOptionList] = useState(defaultOptionList);
@@ -331,7 +332,12 @@ function LeftSideBar() {
             <p className="py-3 px-4 hover:bg-hoverColor">
               Add an existing account
             </p>
-            <p className="py-3 px-4 hover:bg-hoverColor w-[300px] truncate">
+            <p
+              className="py-3 px-4 hover:bg-hoverColor w-[300px] truncate"
+              onClick={() => {
+                logout();
+              }}
+            >
               Log out @{data?.username}
             </p>
           </DropdownMenuContent>

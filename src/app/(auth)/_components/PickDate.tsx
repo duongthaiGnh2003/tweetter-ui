@@ -1,6 +1,6 @@
 import { ChevronDown } from "lucide-react";
 import { Dispatch, SetStateAction, useState } from "react";
-import { PickeType } from "~/components/enum";
+import { PickerType } from "~/components/enum";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,7 +15,7 @@ interface PickerMonthProps {
   month?: string;
   year?: string;
   className?: string;
-  type: PickeType;
+  type: PickerType;
 }
 
 const MONTHS = [
@@ -99,15 +99,15 @@ function DatePicker({
     ));
   };
   const content = {
-    [PickeType.Day]: <DayList />,
-    [PickeType.Month]: <MonthList />,
-    [PickeType.Year]: <YearList />,
+    [PickerType.Day]: <DayList />,
+    [PickerType.Month]: <MonthList />,
+    [PickerType.Year]: <YearList />,
   };
-  const lable = {
-    [PickeType.Day]: value,
-    [PickeType.Month]:
+  const label = {
+    [PickerType.Day]: value,
+    [PickerType.Month]:
       value && MONTHS.find((month) => month.value === value)?.label,
-    [PickeType.Year]: value,
+    [PickerType.Year]: value,
   };
   return (
     <DropdownMenu open={clicked} onOpenChange={setClicked}>
@@ -130,7 +130,7 @@ function DatePicker({
             </p>
           </div>
 
-          <div className="text-[17px]">{lable[type]}</div>
+          <div className="text-[17px]">{label[type]}</div>
         </div>
         <div className="self-center">
           <ChevronDown color="#71767b" size={22} />
@@ -140,9 +140,9 @@ function DatePicker({
         avoidCollisions={false}
         className={cn(
           " w-full hideScroll max-h-[250px] p-0 ",
-          type === PickeType.Day
+          type === PickerType.Day
             ? "min-w-[90px]"
-            : type === PickeType.Year
+            : type === PickerType.Year
             ? "min-w-[115px]"
             : "min-w-[205px]"
         )}

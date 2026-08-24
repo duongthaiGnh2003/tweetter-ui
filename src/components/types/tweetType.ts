@@ -8,7 +8,7 @@ export enum TweetType {
 }
 export enum TweetAudience {
   Everyone,
-  TwiterCircle,
+  TwitterCircle,
 }
 export enum MediaType {
   Image,

@@ -1,7 +1,7 @@
 import React from "react";
 import { IconProps } from "./HomeIcon";
 
-export const FlastIcon: React.FC<IconProps> = ({ width = 26, height = 26 }) => {
+export const FlashIcon: React.FC<IconProps> = ({ width = 26, height = 26 }) => {
   return (
     <svg
       viewBox="0 0 24 24"

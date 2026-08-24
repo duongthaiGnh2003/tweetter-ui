@@ -26,7 +26,7 @@ const useGetNewFeedTweet = (limit: number, page: number) => {
 };
 const useGetATweet = (id: string) => {
   return useQuery({
-    queryKey: ["anTweet", id],
+    queryKey: ["aTweet", id],
     queryFn: () => getATweetService(id),
     networkMode: "always",
     retryDelay: 3000,

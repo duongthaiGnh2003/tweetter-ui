@@ -15,7 +15,7 @@ import { Controller, useForm } from "react-hook-form";
 import z from "zod";
 import ButtonToSign from "~/app/(auth)/_components/ButtonToSign";
 import { CanReply } from "~/components/enum";
-import { CheckCriendIcon, EarIcon } from "~/components/icons/iconsList";
+import { CheckCircleIcon, EarthIcon } from "~/components/icons/iconsList";
 import { UserType } from "~/components/types/userType";
 import {
   DropdownMenu,
@@ -35,7 +35,7 @@ import { useCreateTweet, useUploadMedia } from "~/hook/useTweet";
 import { TweetAudience, TweetType } from "~/components/types/tweetType";
 import Loading from "~/components/loading/LoadingIcon";
 
-// import EmojiPicker from "./PickEmoij";
+// import EmojiPicker from "./PickEmoji";
 import { Editor } from "@tiptap/react";
 import Tiptap from "../Tiptap";
 
@@ -53,7 +53,7 @@ const canReplyList = [
   {
     title: " Verified accounts",
     mode: CanReply.VerifiedAccounts,
-    icon: <CheckCriendIcon color="#ffff" />,
+    icon: <CheckCircleIcon color="#ffff" />,
   },
   {
     title: " Only accounts you mention",
@@ -80,7 +80,7 @@ function CreatePost({ data }: { data: UserType }) {
   const [canReply, setCanReply] = useState<CanReply>(CanReply.Everyone);
   const [fileList, setFileList] = useState<File[]>([]);
   const [previewUrls, setPreviewUrls] = useState<string[]>([]);
-  const [showEmoij, setShowEmoij] = useState<boolean>(false);
+  const [showEmoji, setShowEmoji] = useState<boolean>(false);
   const [editorTiptap, setTiptapMethod] = useState<Editor | null>(null);
 
   const mutation = useCreateTweet();
@@ -237,7 +237,7 @@ function CreatePost({ data }: { data: UserType }) {
           <DropdownMenu>
             <DropdownMenuTrigger className=" w-fit px-3 mb-3 rounded-full hover:bg-[#1d9bf01a] p-0 outline-none cursor-pointer ">
               <div className=" flex items-center gap-1">
-                <EarIcon width={16} height={16} />
+                <EarthIcon width={16} height={16} />
                 <p className=" text-[14px] text-[#1d9bf0] font-bold ">
                   Everyone can reply
                 </p>
@@ -309,12 +309,12 @@ function CreatePost({ data }: { data: UserType }) {
               <div
                 className=" relative flex justify-center items-center cursor-pointer rounded-full hover:bg-hoverColor size-8"
                 onClick={() => {
-                  setShowEmoij(!showEmoij);
+                  setShowEmoji(!showEmoji);
                 }}
               >
                 <Smile color="#1d9bf0" size={20} />
               </div>
-              {showEmoij && (
+              {showEmoji && (
                 <div className=" absolute top-full left-[70%] translate-x-[-30%] ">
                   {/* <EmojiPicker
                     onSelect={(emoji: { native: string }) => {
